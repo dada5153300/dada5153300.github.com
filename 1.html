@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>高达个人主页</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+/*设置超链接样式*/
+table {
+	border-spacing: 0;
+}
+
+a {
+	color: #5086a5;
+	text-decoration: none;
+	font-size: 12px;
+}
+
+a:hover {
+	color: #5086a5;
+	text-decoration: underline;
+	font-size: 12px;
+}
+
+a:visited {
+	color: #5086a5;
+	font-size: 12px;
+}
+/*整个tab层居中，宽度为600px*/
+#tabDiv {
+	width: 600px;
+	margin: 1em auto;
+	padding-bottom: 10px;
+	border-right: #b2c9d3 1px solid;
+	border-top: #b2c9d3 1px solid;
+	border-left: #b2c9d3 1px solid;
+	border-bottom: #b2c9d3 1px solid;
+	background: #ffffff;
+}
+/*tab头的样式*/
+#tabsHead {
+	padding-left: 0px;
+	height: 26px;
+	background-color: #e8f7fc;
+	font-size: 1em;
+	margin: 1px 0px 0px;
+	color: #5086a5;
+	line-height: 26px;
+}
+/*已选tab头（超链接）的样式*/
+.curtab {
+	padding-top: 0px;
+	padding-right: 10px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	border-right: #b2c9d3 1px solid;
+	font-weight: bold;
+	float: left;
+	cursor: pointer;
+	background: #ffffff;
+}
+/*未选tab头（超链接）的样式*/
+.tabs {
+	border-right: #c1d8e0 1px solid;
+	padding-top: 0px;
+	padding-right: 10px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	font-weight: normal;
+	float: left;
+	cursor: pointer;
+}
+p {
+	font-size: 12pt;
+	text-indent: 2em;
+}
+li {
+
+  	height: 25px;
+	font-family: "黑体";
+	font-size: 12pt;
+}
+</style>
+
+<script type="text/jscript">	
+        //显示tab（tabHeadId：tab头中当前的超链接；tabContentId要显示的层ID）
+        function showTab(tabHeadId,tabContentId) 
+        {
+            //tab层
+            var tabDiv = document.getElementById("tabDiv");
+            //将tab层中所有的内容层设为不可见
+            //遍历tab层下的所有子节点
+            var taContents = tabDiv.childNodes;
+            for(i=0; i<taContents.length; i++) 
+            {
+                //将所有内容层都设为不可见
+                if(taContents[i].id!=null && taContents[i].id != 'tabsHead')
+                {
+                    taContents[i].style.display = 'none';
+                }
+            }
+            //将要显示的层设为可见
+            document.getElementById(tabContentId).style.display = 'block';          
+            //遍历tab头中所有的超链接
+            var tabHeads = document.getElementById('tabsHead').getElementsByTagName('a');
+            for(i=0; i<tabHeads.length; i++) 
+            { 
+                //将超链接的样式设为未选的tab头样式
+                tabHeads[i].className='tabs'; 
+            }
+            //将当前超链接的样式设为已选tab头样式
+            document.getElementById(tabHeadId).className='curtab';
+            document.getElementById(tabHeadId).blur();
+        }
+</script>
+</head>
+
+<body>
+<div id="time"> </div>
+<script>
+window.onload=function(){
+//定时器每秒调用一次fnDate()
+setInterval(function(){
+fnDate();
+},1000);
+}
+
+//js 获取当前时间
+function fnDate(){
+var oDiv=document.getElementById("time");
+var date=new Date();
+var year=date.getFullYear();//当前年份
+var month=date.getMonth();//当前月份
+var data=date.getDate();//天
+var hours=date.getHours();//小时
+var minute=date.getMinutes();//分
+var second=date.getSeconds();//秒
+var time="当前时间："+year+"-"+fnW((month+1))+"-"+fnW(data)+" "+fnW(hours)+":"+fnW(minute)+":"+fnW(second);
+oDiv.innerHTML=time;
+}
+//补位 当某个字段不是两位数时补0
+function fnW(str){
+var num;
+str>10?num=str:num="0"+str;
+return num;
+} 
+</script>
+	<audio autoplay="autoplay" loop="" ><source src="sanjiu.mp3"></audio>
+
+	<div style="width: 100%; font-family: 黑体; text-align: center; font-size: 20pt; color:">高达个人主页</div>
+
+	<div id="tabDiv" style="width: 1000px">
+
+		<div id="tabsHead">
+			<a id="tabs1" class="curtab" href="javascript:showTab('tabs1','tabContent1')">个人信息</a> 
+			<a id="tabs2" class="tabs" href="javascript:showTab('tabs2','tabContent2')">工作经验和学习经历</a>
+			<a id="tabs3" class="tabs" href="javascript:showTab('tabs3','tabContent3')">职业规划</a>
+		</div>
+
+		<div id="tabContent1" style="display: block">
+			<table style="border-width: 0; width: 100%">
+				<tr>
+					<td rowspan="3" style="width: 300px; text-align: center">
+						<img alt="达" src="./img/da.jpg" style="width: 280px" /></td>
+					<td colspan="3" rowspan="3">
+						<table border="1" style="border-left-color: aqua; border-bottom-color: aqua; width: 701px; border-top-style: solid; border-top-color: aqua; border-right-style: solid; border-left-style: solid; height: 380px; border-right-color: aqua; border-bottom-style: solid">
+							<tr>
+								<td style="width: 50%">姓名：高达</td>
+								<td style="width: 50%">出生日期：1999年6月4日</td>
+							</tr>
+							<tr>
+								<td style="width: 50%">籍贯：河北省廊坊市</td>
+								<td style="width: 50%">性别：男</td>
+							</tr>
+							<tr>
+								<td style="width: 50%; height: 29px">学校：石家庄铁道大学</td>
+								<td style="width: 50%; height: 29px">专业：软件工程</td>
+							</tr>
+							<tr>
+								<td style="width: 50%">喜欢的运动：兵乒球</td>
+								<td style="width: 50%">喜欢的食物：学一二楼打的西红柿炒鸡蛋</td>
+							</tr>
+							<tr>
+								<td style="width: 50%">最擅长的编程语言：Java</td>
+								<td style="width: 50%">擅长的科目：数学与历史</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<p>不抽烟，会做饭，会开车，有良好的自立能力。</p>
+									<p>虽然最喜欢兵乒球，但是好久不打了，上次还是初中，八成连握拍子都不会了。</p>
+									<p>比较恋家，希望在离家较近的地方工作，不喜欢南方潮湿的天气。</p>
+									<p>很容易满足，即使是吃到学一二楼的西红柿炒鸡蛋这件小事情也会开心好久。</p>
+									<p>学习和工作的时候不喜欢被不熟的人打扰，介绍对象除外。</p>
+									<p>高中的时候得过奥数奖，随随便便参加，随随便便得奖。大学没有得过奖，主要是上了大学以后我最喜欢的女孩子和男孩子都见不到了，家人对这些东西也无所谓。</p>
+									<p>对不熟的人沉默寡言，不擅长表达感情，对熟人废话不停，都能把朋友说烦了</p>
+									<p>不喜欢阿谀奉承，喜欢干实事，不喜与人交际，讨厌酒局。我连家族聚餐的时候都不喝酒，就不会在非亲非故的饭局喝酒。</p>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+				</tr>
+				<tr>
+				</tr>
+			</table>
+		</div>
+		<!--以下为工作经验部分内容-->
+		<div id="tabContent2" style="display: none">
+			<h2>工作经验</h2>
+			<ul>
+				<li>参与过校艺术团宣传部工作，发送微信推文。</li>
+				<li>担任过校易班工作站的技术开发部部长。</li>
+				<li>参与过敬老院的工作。</li>
+				<li>参与布置“星光铁大”的场地。</li>
+				<li>植树节参与植树</li>
+				
+			</ul>
+			<h2>学习经历</h2>
+			<ul>
+				<li>学习过Java，python，php，C，C++，C#等语言，Java使用最多。</li>
+				<li>做过JavaWeb方面的软件，也做过安卓方面的软件。</li>
+				<li>做过python的爬虫项目</li>
+				
+			</ul>
+		</div>
+		<div id="tabContent3" style="display: none">
+			<p>农村普通家庭出身的我，农村人的耐吃苦的优点我有，农村人的爱占小便宜的缺点也有。而且我们这一大家子就出了我跟我姐俩个大学生，家人对我的期盼也不是太高。</p>
+			<p>我们学校是以铁道为名的，但是我觉得我们学校的计算机相关专业并不差，就是与公司之间的交流实习并没有太多，以至于大学期间没有什么实习经验。</p>
+			<p>互联网行业的飞速发展，人们生活方便了许多，也带动了其他行业的发展，比如物流行业，但是实体工业行业并没有吃到太多红利，我觉得我们应该想办法让工业行业也搭上互联网的便车。这是我发现的就业方面的一大缺口。国家政策一直鼓励这个行业发展，虽然芯片方面受到了美国的制裁，但是我坚信中国会因为发达的互联网事业走向世界之巅。</p>
+			<p>java工程师是个不错的职业，但是因为python的兴起，她有点黯然失色，但是他依然有一席之位，而且因为他框架的成熟他依旧立于不败之位。</p>
+			<p>我同学去北京实习，司机跟她说：“你会喜欢上这个城市的”。还有一个同学，他说他要去北京，因为他对象去北京了。没错这俩是一对。北京我也去过几次，北京是个好城市，可是故宫说实话不就是老房子嘛，也没啥看头。如果我在北京工作，我并不想落户北京，因为我觉得每一个人的梦想都是荣归故里，衣锦还乡，也许只是一个愿望，落叶归根罢了。</p>
+			<p>我的职业规划是考公安方面的公务员，公务员稳定，其次是软件测试工程师，虽然软件测试工程师没有开发人员工资高，但是任务量可能少点，我可以抽空考公务员。为什么这么钟情于公务员呢？因为我对自己在软件行业的发展前景并不看好，感觉自己做不了多久就会被淘汰了，因为自己好像不太擅长这方面。</p>
+			<p>我应该是那种走一步看一步的人，说白了，就是没有目标的人，遇到问题再说的人，因为曾经高中做过的长期计划因为一些事情都没有去做到自己应该做到的。对未来比较迷茫，考取公务员不过是一劳永逸的解决办法罢了。</p>
+		</div>
+	</div>
+	<hr />
+	<div style="text-align: center; width: 100%; font-size: 12px; color: #333;"></div>
+</body>
+</html>
